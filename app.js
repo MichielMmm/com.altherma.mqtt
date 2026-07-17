@@ -20,8 +20,8 @@ const requiredLabels = [
   'RT setpoint',
   'Flow sensor (l/min)',
   'Error Code',
-  'Error detailed code',
-  'Error type',
+  //'Error detailed code',
+  //'Error type',
 ];
 let prevWarning
 
