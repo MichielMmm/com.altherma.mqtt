@@ -15,26 +15,36 @@
   },
   "class": "heatpump",
   "capabilities": [
-    "operation_mode",
-    "thermostat_on_off",
-    "measure_temperature.outdoor",
-    "target_temperature_own",
-    "measure_temperature.leavingWater",
-    "measure_temperature.returningWater",
-    "delta_temperature",
-    "measure_water",
-    "measure_power",
-    "measure_cop",
-    "meter_power",
-    "meter_power.month",
-    "meter_power.year",
-    "space_heating",
-    "measure_temperature.lwSetPoint"
+      "measure_temperature.outdoor",
+      "target_temperature_own",
+      "measure_temperature.leavingWater",
+      "measure_temperature.returningWater",
+      "delta_temperature",
+      "measure_water",
+      "measure_power",
+      "measure_cop",
+      "meter_power",
+      "meter_power.month",
+      "meter_power.year",
+      "space_heating",
+      "measure_temperature.lwSetPoint",
+      "measure_temperature.indoorR1T",
+      "measure_temperature.leavingWaterBeforeBUHR1T",
+      "measure_temperature.outdoorHeatExchanger",
+      "measure_temperature.refrigerantLiquidR3T",
+      "measure_temperature.liquidPipeR6T",
+      "defrost_operation",
+      "circulation_pump",
+      "heating_destination",
+      "backup_heater",
+      "measure_refrigerant_pressure",
+      "measure_inverter_current"
+
   ],
   "capabilitiesOptions": {
     "measure_temperature.outdoor": {
       "title": {
-        "en": "Outdoor temperature",
+        "en": "Outdoor temperature (R1T Outdoor)",
         "da": "Udendørstemperatur",
         "de": "Außentemperatur",
         "es": "Temperatura exterior",
@@ -42,7 +52,7 @@
         "fr": "Température extérieure",
         "it": "Temperatura esterna",
         "ko": "실외 온도",
-        "nl": "Buitentemperatuur",
+        "nl": "Buitentemperatuur (R1T Outdoor)",
         "no": "Utetemperatur",
         "pl": "Temperatura zewnętrzna",
         "sv": "Utomhustemperatur"
@@ -52,7 +62,7 @@
     },
     "measure_temperature.leavingWater": {
       "title": {
-        "en": "Leaving Water temperature",
+        "en": "Leaving water after BUH (R2T)",
         "da": "Fremløbstemperatur",
         "de": "Vorlauftemperatur",
         "es": "Temperatura de impulsión",
@@ -60,7 +70,7 @@
         "fr": "Température de départ",
         "it": "Temperatura di mandata",
         "ko": "출수 온도",
-        "nl": "Aanvoertemperatuur",
+        "nl": "Aanvoertemperatuur na BUH (R2T)",
         "no": "Turtemperatur",
         "pl": "Temperatura zasilania",
         "sv": "Framledningstemperatur"
@@ -70,7 +80,7 @@
     },
     "measure_temperature.returningWater": {
       "title": {
-        "en": "Returning water temperature",
+        "en": "Return water (R4T)",
         "da": "Returtemperatur",
         "de": "Rücklauftemperatur",
         "es": "Temperatura de retorno",
@@ -78,7 +88,7 @@
         "fr": "Température de retour",
         "it": "Temperatura di ritorno",
         "ko": "환수 온도",
-        "nl": "Retourtemperatuur",
+        "nl": "Retourwater (R4T)",
         "no": "Returtemperatur",
         "pl": "Temperatura powrotu",
         "sv": "Returledningstemperatur"
@@ -136,6 +146,69 @@
         "pl": "Energia w tym roku",
         "sv": "Energi i år"
       }
+    },
+    "measure_temperature.refrigerantLiquidR3T": {
+      "title": {
+        "en": "Refrigerant liquid temperature (R3T)",
+        "nl": "Koelmiddeltemperatuur vloeistofzijde (R3T)"
+      },
+      "units": "°C",
+      "decimals": 1,
+      "insights": true
+    },
+    "measure_temperature.indoorR1T": {
+      "title": {
+        "en": "Indoor temperature (R1T Indoor)",
+        "nl": "Binnentemperatuur (R1T Indoor)"
+      },
+      "units": "°C",
+      "decimals": 1,
+      "insights": true
+    },
+    "measure_temperature.leavingWaterBeforeBUHR1T": {
+      "title": {
+        "en": "Leaving water before BUH (R1T)",
+        "nl": "Aanvoertemperatuur vóór BUH (R1T)"
+      },
+      "units": "°C",
+      "decimals": 1,
+      "insights": true
+    },
+    "measure_temperature.indoorR1T": {
+      "title": {
+        "en": "Indoor temperature (R1T Indoor)",
+        "nl": "Binnentemperatuur (R1T Indoor)"
+      },
+      "units": "°C",
+      "decimals": 1,
+      "insights": true
+    },
+    "measure_temperature.leavingWaterBeforeBUHR1T": {
+      "title": {
+        "en": "Leaving water before BUH (R1T)",
+        "nl": "Aanvoertemperatuur vóór BUH (R1T)"
+      },
+      "units": "°C",
+      "decimals": 1,
+      "insights": true
+    },
+    "measure_temperature.outdoorHeatExchanger": {
+      "title": {
+        "en": "Outdoor heat exchanger temperature",
+        "nl": "Buitenwarmtewisselaar temperatuur"
+      },
+      "units": "°C",
+      "decimals": 1,
+      "insights": true
+    },
+    "measure_temperature.liquidPipeR6T": {
+      "title": {
+        "en": "Liquid pipe temperature (R6T)",
+        "nl": "Vloeistofleidingtemperatuur (R6T)"
+      },
+      "units": "°C",
+      "decimals": 1,
+      "insights": true
     }
   },
   "platforms": [

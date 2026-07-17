@@ -1,0 +1,17 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Refrigerant pressure",
+    "nl": "Koelmiddeldruk"
+  },
+  "units": {
+    "en": "bar",
+    "nl": "bar"
+  },
+  "decimals": 1,
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "chartType": "spline",
+  "uiComponent": "sensor"
+}

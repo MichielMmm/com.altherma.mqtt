@@ -1,0 +1,41 @@
+{
+  "type": "enum",
+  "title": {
+    "en": "Backup heater",
+    "nl": "Elektrische bijverwarming"
+  },
+  "values": [
+    {
+      "id": "off",
+      "title": {
+        "en": "Off",
+        "nl": "Uit"
+      }
+    },
+    {
+      "id": "stage1",
+      "title": {
+        "en": "Stage 1",
+        "nl": "Trap 1"
+      }
+    },
+    {
+      "id": "stage2",
+      "title": {
+        "en": "Stage 2",
+        "nl": "Trap 2"
+      }
+    },
+    {
+      "id": "stage1and2",
+      "title": {
+        "en": "Stage 1 + 2",
+        "nl": "Trap 1 + 2"
+      }
+    }
+  ],
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "uiComponent": "sensor"
+}

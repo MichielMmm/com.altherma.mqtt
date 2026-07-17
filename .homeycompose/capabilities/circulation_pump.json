@@ -1,0 +1,27 @@
+{
+  "type": "enum",
+  "title": {
+    "en": "Circulation pump",
+    "nl": "Circulatiepomp"
+  },
+  "values": [
+    {
+      "id": "on",
+      "title": {
+        "en": "On",
+        "nl": "Aan"
+      }
+    },
+    {
+      "id": "off",
+      "title": {
+        "en": "Off",
+        "nl": "Uit"
+      }
+    }
+  ],
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "uiComponent": "sensor"
+}

@@ -276,6 +276,7 @@ module.exports = class AlthermaMQTTApp extends Homey.App {
       defrostOperation:  raw['Defrost Operation'] === 'ON',
       spaceHeatingOn: raw['Space heating Operation ON/OFF'] === 'ON',
       powerfulDhwOn: raw['Powerful DHW Operation. ON/OFF'] === 'ON',
+      circulationPumpOn: raw['Circulation pump operation'] === 'ON',
 
       // errors
       errorType: raw['Error type'] ?? null,
@@ -285,11 +286,15 @@ module.exports = class AlthermaMQTTApp extends Homey.App {
 
       // temperatures (°C)
       outdoorAirTemp: raw['R1T-Outdoor air temp.'],
+      indoorAmbientTemp: raw['Indoor ambient temp. (R1T)'],
+      outdoorHeatExchangerTemp: raw['O/U Heat Exch. Temp.'],
+      liquidPipeTemp: raw['Liquid pipe temp.(R6T)'],
+      refrigerantLiquidTemp: raw['Refrig. Temp. liquid side (R3T)'],
       leavingWaterTempBeforeBUH: raw['Leaving water temp. before BUH (R1T)'],
       leavingWaterTemp: raw['Leaving water temp. after BUH (R2T)'],
       inletWaterTemp: raw['Inlet water temp.(R4T)'],
       dhwTankTemp: raw['DHW tank temp. (R5T)'],
-
+      refrigerantPressure: raw['Pressure'],
       // power related information
       invPrimaryCurrent: raw['INV primary current (A)'],
       

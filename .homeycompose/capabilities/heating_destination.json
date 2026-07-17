@@ -1,0 +1,27 @@
+{
+  "type": "enum",
+  "title": {
+    "en": "Three-way valve",
+    "nl": "Bestemming driewegklep"
+  },
+  "values": [
+    {
+      "id": "space",
+      "title": {
+        "en": "Space heating",
+        "nl": "Ruimteverwarming"
+      }
+    },
+    {
+      "id": "dhw",
+      "title": {
+        "en": "Domestic hot water",
+        "nl": "Tapwater"
+      }
+    }
+  ],
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "uiComponent": "sensor"
+}

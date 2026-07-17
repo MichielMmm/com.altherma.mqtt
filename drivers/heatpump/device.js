@@ -104,6 +104,26 @@ module.exports = class Heatpump extends Homey.Device {
         this.log ('- reordering done');
       */
     }
+    const michielCapabilities = [
+        'defrost_operation',
+        'circulation_pump',
+        'heating_destination',
+        'backup_heater',
+        'measure_temperature.indoorR1T',
+        'measure_temperature.leavingWaterBeforeBUHR1T',
+        'measure_temperature.outdoorHeatExchanger',
+        'measure_temperature.liquidPipeR6T',
+        'measure_refrigerant_pressure',
+        'measure_inverter_current',
+      ];
+
+      for (const capability of michielCapabilities) {
+        if (!this.hasCapability(capability)) {
+          await this.addCapability(capability);
+          await delay(100);
+        }
+      }
+
   }
 
   async onAdded() {
@@ -195,9 +215,72 @@ module.exports = class Heatpump extends Homey.Device {
 
       await this.setCapabilityValue('thermostat_on_off',data.thermostatOn ? 'on' : 'off');
       await this.setCapabilityValue('space_heating',data.spaceHeatingOn ? 'on' : 'off');
+
+      await this.setCapabilityValue(
+        'defrost_operation',
+        data.defrostOperation ? 'on' : 'off'
+      );
+
+      await this.setCapabilityValue(
+        'circulation_pump',
+        data.circulationPumpOn ? 'on' : 'off'
+      );
+
+      await this.setCapabilityValue(
+        'heating_destination',
+        data.threeWayValveDhw ? 'dhw' : 'space'
+      );
+
+      let backupHeaterStatus = 'off';
+
+      if (data.buhStep1On && data.buhStep2On) {
+        backupHeaterStatus = 'stage1and2';
+      } else if (data.buhStep1On) {
+        backupHeaterStatus = 'stage1';
+      } else if (data.buhStep2On) {
+        backupHeaterStatus = 'stage2';
+      }
+
+      await this.setCapabilityValue(
+        'backup_heater',
+        backupHeaterStatus
+      );
+
       await this.setCapabilityValue('measure_temperature.outdoor', data.outdoorAirTemp);
       await this.setCapabilityValue('measure_temperature.leavingWater', data.leavingWaterTemp);
       await this.setCapabilityValue('measure_temperature.returningWater', data.inletWaterTemp);
+
+
+      await this._setNumericCapability(
+        'measure_temperature.indoorR1T',
+        data.indoorAmbientTemp
+      );
+
+      await this._setNumericCapability(
+        'measure_temperature.leavingWaterBeforeBUHR1T',
+        data.leavingWaterTempBeforeBUH
+      );
+
+      await this._setNumericCapability(
+        'measure_temperature.outdoorHeatExchanger',
+        data.outdoorHeatExchangerTemp
+      );
+
+      await this._setNumericCapability(
+        'measure_temperature.liquidPipeR6T',
+        data.liquidPipeTemp
+      );
+
+      await this._setNumericCapability(
+        'measure_refrigerant_pressure',
+        data.refrigerantPressure
+      );
+
+      await this._setNumericCapability(
+        'measure_inverter_current',
+        data.invPrimaryCurrent
+      );
+
 
       const leaving = data.leavingWaterTemp;
       const returning = data.inletWaterTemp;
@@ -273,9 +356,19 @@ module.exports = class Heatpump extends Homey.Device {
   }
 
   // helper
+  async _setNumericCapability(capability, value) {
+    const numericValue = Number(value);
+    if (!Number.isFinite(numericValue)) {
+      return;
+    }
+
+    await this.setCapabilityValue(
+      capability,
+      numericValue
+    );
+  }
   _updatePowerAndEnergy(totalPowerW, ts) {
     const now = ts ?? Date.now();
-
     if (this._prevTs == null) {
       this._prevTs = now;
       this._prevPowerW = totalPowerW;

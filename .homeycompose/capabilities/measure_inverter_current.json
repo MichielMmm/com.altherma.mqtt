@@ -1,0 +1,17 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Primary inverter current",
+    "nl": "Primaire inverterstroom"
+  },
+  "units": {
+    "en": "A",
+    "nl": "A"
+  },
+  "decimals": 1,
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "chartType": "spline",
+  "uiComponent": "sensor"
+}
