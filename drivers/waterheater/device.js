@@ -133,7 +133,14 @@ module.exports = class Waterheater extends Homey.Device {
     //this.log('Water heater device received:',data);
     try {
       await this.setCapabilityValue('measure_temperature.dhwtank', data.dhwTankTemp);
-1
+
+      const dhwSetpoint = Number(data.dhwSetpoint);
+      if (Number.isFinite(dhwSetpoint)) {
+        await this.setCapabilityValue(
+          'target_temperature_dhw',
+          dhwSetpoint
+        );
+      }
       await this.setCapabilityValue('powerful_dhwtank', data.powerfulDhwOn ? 'on' : 'off');
 
       await this.checkResets();
